@@ -1,0 +1,42 @@
+
+<layout>
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="utilModel"
+            type="com.example.romatupkalenko.wikiresearcherapp.viewmodel.UtilViewModel"/>
+        <variable
+            name="mainModel"
+            type="com.example.romatupkalenko.wikiresearcherapp.viewmodel.MainViewModel"/>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_articles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:visibility="@{utilModel.getNetworkState() ?  View.VISIBLE :  View.INVISIBLE}"
+          />
+
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:text="@{utilModel.getNetworkState() ?  @string/no_data :  @string/no_network}"
+            android:visibility="@{utilModel.getNetworkState() ? View.INVISIBLE :  View.VISIBLE }"/>
+        <!-- A progress bar that will be shown to users to indicate that Article data is loading -->
+        <ProgressBar
+            android:id="@+id/pb_loading_indicator"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</layout>

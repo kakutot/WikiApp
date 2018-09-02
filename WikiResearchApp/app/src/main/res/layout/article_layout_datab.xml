@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout  xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="article"
+            type="com.example.romatupkalenko.wikiresearcherapp.data.database.ArticleEntry" />
+        <variable
+        name ="favClicker"
+        type= "com.example.romatupkalenko.wikiresearcherapp.ui.MyAdapter.FavClickListener"/>
+        <variable
+            name="clicker"
+            type="android.view.View.OnClickListener"/>
+
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        >
+        <android.support.v7.widget.CardView
+            android:id="@+id/cv_db"
+            android:layout_width="match_parent"
+            android:layout_height="240dp">
+
+            <RelativeLayout
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/article_photo"
+                    app:imageUrl="@{article.getImageUrl()}"
+                    android:onClick="@{(view)->clicker.onClick(view)}"
+                    android:layout_width="400dp"
+                    android:layout_height="130dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="16dp" />
+
+                <TextView
+                    android:id="@+id/article_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/article_photo"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="24sp"
+                    android:lines="1"
+                    android:text='@{article.getTitle()}'
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/article_title"
+                    android:layout_marginTop="5dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="?android:attr/listDivider" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_below="@id/article_title"
+                    android:layout_marginBottom="11dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:onClick="@{(view)->favClicker.mOnClick(view)}"
+                    android:src="@{article.isFaved() ? @drawable/ic_grade_red_24dp : @drawable/ic_grade_black_24dp}"/>
+            </RelativeLayout>
+
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</layout>

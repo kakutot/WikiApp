@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WikiResearcherApp</string>
+    <string name="articles_activity">Articles</string>
+    <string name="fav_aricles_activity">Saved articleResponses</string>
+    <string name="no_network">No network available</string>
+    <string name="no_data">No data available</string>
+
+</resources>

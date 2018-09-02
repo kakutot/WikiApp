@@ -1,0 +1,35 @@
+<layout>
+    <data>
+        <import type="android.view.View"/>
+
+        <variable
+            name="mainViewModel"
+            type="com.example.romatupkalenko.wikiresearcherapp.viewmodel.MainViewModel">
+
+        </variable>
+    </data>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_fav_articles"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:visibility="visible"
+            />
+
+
+        <!-- A progress bar that will be shown to users to indicate that Article data is loading -->
+        <ProgressBar
+            android:id="@+id/pb_loading_indicator_fav_articles"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+           />
+    </RelativeLayout>
+</layout>
