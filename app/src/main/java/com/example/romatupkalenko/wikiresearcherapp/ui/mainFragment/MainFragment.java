@@ -134,7 +134,6 @@ public class MainFragment extends Fragment implements MyAdapter.MyAdapterOnItemC
             if(aBoolean){
                 mViewModel.getCurrentTitle().observe(this,newTitle->{
                     Log.i(LOG_TAG,"Current title :" + newTitle);
-
                         mViewModel.getArticles().observe(this, (articles)->{
                             if(articles!=null && articles.size()>0){
                                 Log.i(LOG_TAG,"Current articles number :" + articles.size());
@@ -171,6 +170,15 @@ public class MainFragment extends Fragment implements MyAdapter.MyAdapterOnItemC
                         });
                     });
                 }
+                else if(!aBoolean && myPagedAdapter.getItemCount()>0){
+                    myPagedAdapter.setNetworkState(DataLoadingState.LOADING);
+                    binding.recyclerviewArticles.setVisibility(View.VISIBLE);
+                    binding.pbLoadingIndicator.setVisibility(View.INVISIBLE);
+                     }
+                 else{
+                invisRecyclerView();
+                binding.pbLoadingIndicator.setVisibility(View.INVISIBLE);
+            }
             });
         }
     private void initRecyclerView(){
